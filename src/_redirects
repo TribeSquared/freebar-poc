@@ -2,8 +2,8 @@
 # Page and post addresses are unchanged, so they need no rules here.
 # A rule only applies when no real file exists at that address.
 
-# WordPress site search (/?s=word) -> the new search page
-/                   s=:s    /search/?q=:s      301
+# WordPress site search (/?s=word) -> the new search page. Forced (!) because the home page exists
+/                   s=:s    /search/?q=:s      301!
 
 # Leftover pages flagged in the audit
 /sample-page/               /                  301
