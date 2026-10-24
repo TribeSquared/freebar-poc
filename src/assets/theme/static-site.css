@@ -1,0 +1,15 @@
+/* Additions for the static site (not from WordPress). Loaded last. */
+
+/* WordPress made a square 350 x 350 copy of each featured image for the cards.
+   Here editors upload one image and the browser crops it to the same square. */
+.card .image-holder img.card-img-top {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Replaces the AddEvent button: a plain link to a calendar file */
+.add-to-calendar {
+  display: inline-block;
+  margin-top: 1em;
+}

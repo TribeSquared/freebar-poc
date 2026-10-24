@@ -1,9 +1,12 @@
 ---
-title: Governance
-intro: FreeBar is run by a volunteer committee of trustees, who meet four times a year and report to members at the annual general meeting.
-report: /media/docs/trustee-report-2025.pdf
-report_label: Read the 2025 trustees' report
+title: "Governance"
+summary: "FreeBar is a charitable organisation, with trustees and treasurers to make sure we’re compliant with charity law and best practice."
+trustee_report: "/wp-content/uploads/2025/08/2024-Trustee-Report-Final-2.pdf"
+trustee_report_label: "2024 Trustee Report"
+treasurer_report: "/wp-content/uploads/2026/02/Treasurer-Report-year-end-30-June-2025.docx"
+treasurer_report_label: "2025 Treasurer Report"
+note: "*As our annual income is under £5,000, we are not required to register with the Charity Commission."
 ---
-This is the test page for the editor trial. Change this wording, the introduction above or the report, save, and the live page updates a minute or two later.
+FreeBar is a charitable organisation.\* Our governing document is [here](/wp-content/uploads/2019/02/FreeBar-governing-document-as-amended-on-27-February-2017.pdf). Although we’re a pretty informal organisation, we do have trustees and treasurers to make sure we’re compliant with charity law and best practice.
 
-The layout, colours and menu are fixed in the templates, so they can't be changed from either editor.
+Our trustees are [Trustee 1], [Trustee 2] and [Trustee 3]. Our treasurers are [Treasurer 1] and [Treasurer 2].

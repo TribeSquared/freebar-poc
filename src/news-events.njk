@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: News & Events
+bodyClass: page-template-template-newsevents
+permalink: /news-events/
+---
+{# News & Events list: every post, newest first. Built automatically from src/news/. #}
+<section class="heading-section text-white text-uppercase bg-carrot">
+  <div class="container">
+    <div class="heading-section-content d-sm-flex align-content-sm-end align-items-sm-end justify-content-sm-between">
+      <h1>NEWS <span class="opacity">&amp;</span><br> EVENTS</h1>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="row no-gutters bg-carrot">
+    {%- for post in collections.posts %}
+    {% include "partials/post-card.njk" %}
+    {%- endfor %}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+{# One post on the home page and the News & Events page: a text tile, then an image tile #}
+<div class="col-sm-6 col-lg-3 {{ post.data.category }}">
+  <a class="card" href="{{ post.url }}">
+    <div class="card-body text-dark text-uppercase">
+      <span class="underline-text underline-carrot">
+        {{ post.data.category }} / {{ (post.data.start or post.date) | cardDate }}
+      </span>
+      <h6>
+        {{ post.data.title }}<br>
+        {%- if post.data.category == "Events" and post.data.start %}
+        <span style="font-weight:300;">{{ post.data.start | shortDate }}</span>
+        {%- endif %}
+      </h6>
+    </div>
+  </a>
+</div>
+<div class="col-sm-6 col-lg-3">
+  <div class="card">
+    <div class="image-holder">
+      {%- if post.data.image %}
+      <img src="{{ post.data.image }}" class="card-img-top wp-post-image" alt="{{ post.data.image_alt }}" loading="lazy" decoding="async">
+      {%- endif %}
+    </div>
+  </div>
+</div>

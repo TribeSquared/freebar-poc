@@ -1,0 +1,31 @@
+---
+pagination:
+  data: collections.events
+  size: 1
+  alias: ev
+permalink: "{{ ev.url }}event.ics"
+eleventyExcludeFromCollections: true
+layout: false
+---
+{#- "Add to Calendar" file for each event, made at build time. Replaces the AddEvent script. -#}
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//FreeBar//Events//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:{{ ev.fileSlug }}@freebar.co.uk
+DTSTAMP:{{ ev.date | icsDate }}Z
+DTSTART;TZID=Europe/London:{{ ev.data.start | icsDate }}
+{%- if ev.data.end %}
+DTEND;TZID=Europe/London:{{ ev.data.end | icsDate }}
+{%- endif %}
+SUMMARY:{{ ev.data.title | icsText }}
+{%- if ev.data.location %}
+LOCATION:{{ ev.data.location | icsText }}
+{%- endif %}
+{%- if ev.data.summary %}
+DESCRIPTION:{{ ev.data.summary | icsText }}
+{%- endif %}
+URL:{{ site.url }}{{ ev.url }}
+END:VEVENT
+END:VCALENDAR

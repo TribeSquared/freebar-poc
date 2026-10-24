@@ -1,7 +1,8 @@
 ---
 layout: layouts/base.njk
 ---
-{# About section page: coloured title band, About menu on the left, content on the right #}
+{# About section page: coloured title band, About menu on the left, content on the right.
+   Governance also has two report downloads and a footnote, each its own editor field. #}
 <section class="heading-section text-white text-uppercase {{ hero }}">
   <div class="container">
     <div class="heading-section-content d-sm-flex align-content-sm-end align-items-sm-end justify-content-sm-between">
@@ -23,9 +24,16 @@ layout: layouts/base.njk
       </div>
       <div class="col-md">
         <div class="about-profile-box">
-          {% if intro %}<p>{{ intro }}</p>{% endif %}
           {{ content | safe }}
-          {% if report %}<p><a href="{{ report }}">{{ report_label | default("Download the report") }}</a></p>{% endif %}
+          {%- if trustee_report %}
+          <p>The latest Trustee report can be downloaded here: <a href="{{ trustee_report }}">{{ trustee_report_label or (trustee_report | filename) }}</a></p>
+          {%- endif %}
+          {%- if treasurer_report %}
+          <p>The latest Treasurer report can be downloaded here: <a href="{{ treasurer_report }}" target="_blank" rel="noopener">{{ treasurer_report_label or (treasurer_report | filename) }}</a></p>
+          {%- endif %}
+          {%- if note %}
+          <p style="font-weight: 400;">{{ note }}</p>
+          {%- endif %}
         </div>
       </div>
     </article>

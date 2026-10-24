@@ -1,6 +1,7 @@
 # Decap CMS configuration (https://decapcms.org/docs/configuration-options/)
-# Logs in with Netlify Identity (email and password) and saves through Git Gateway,
-# so editors don't need a GitHub account.
+# Fallback editor. Logs in with Netlify Identity (email and password) and saves through
+# Git Gateway, so editors don't need a GitHub account. Same fields as Pages CMS.
+# Text boxes allow plain formatting only: bold, italic, links and lists (the Charter also keeps its headings).
 
 backend:
   name: git-gateway
@@ -10,31 +11,70 @@ site_url: /
 display_url: /
 logo_url: ""
 
-media_folder: src/media/docs
-public_folder: /media/docs
+media_folder: src/wp-content/uploads
+public_folder: /wp-content/uploads
 
 collections:
   - name: pages
     label: Pages
     delete: false
     files:
+      - name: home
+        label: Home page
+        file: src/pages/index.md
+        fields:
+          - { label: Page title, name: title, widget: hidden, default: Home }
+          - { label: Big heading, name: hero_heading, widget: string }
+          - { label: Left column heading, name: left_heading, widget: string }
+          - { label: Left column text, name: left_text, widget: markdown, modes: [rich_text], buttons: [bold, italic, link, bulleted-list, numbered-list], editor_components: [] }
+          - { label: Right column heading, name: right_heading, widget: string }
+          - { label: Right column text, name: right_text, widget: markdown, modes: [rich_text], buttons: [bold, italic, link, bulleted-list, numbered-list], editor_components: [] }
+          - { label: Summary for search engines, name: summary, widget: text, required: false }
+      - name: about
+        label: About page
+        file: src/pages/about/index.md
+        fields:
+          - { label: Page title, name: title, widget: string }
+          - { label: Page text, name: body, widget: markdown, modes: [rich_text], buttons: [bold, italic, link, bulleted-list, numbered-list], editor_components: [] }
+          - { label: Summary for search engines, name: summary, widget: text, required: false }
       - name: governance
         label: Governance page
         file: src/pages/about/governance.md
         fields:
           - { label: Page title, name: title, widget: string }
-          - { label: Introduction, name: intro, widget: text, required: false }
-          - label: Trustees' report (PDF)
-            name: report
-            widget: file
-            required: false
-            media_library:
-              config:
-                multiple: false
-          - { label: Report link text, name: report_label, widget: string, required: false }
-          - label: Page text
-            name: body
-            widget: markdown
-            modes: [rich_text]
-            buttons: [bold, italic, link, bulleted-list, numbered-list]
-            editor_components: []
+          - { label: Page text, name: body, widget: markdown, modes: [rich_text], buttons: [bold, italic, link, bulleted-list, numbered-list], editor_components: [] }
+          - { label: Latest Trustee report (file), name: trustee_report, widget: file, required: false }
+          - { label: Trustee report link text, name: trustee_report_label, widget: string, required: false }
+          - { label: Latest Treasurer report (file), name: treasurer_report, widget: file, required: false }
+          - { label: Treasurer report link text, name: treasurer_report_label, widget: string, required: false }
+          - { label: Footnote, name: note, widget: text, required: false }
+          - { label: Summary for search engines, name: summary, widget: text, required: false }
+      - name: charter
+        label: The FreeBar Charter
+        file: src/pages/resources/the-freebar-charter.md
+        fields:
+          - { label: Page title, name: title, widget: string }
+          - { label: Page text, name: body, widget: markdown, modes: [rich_text] }
+          - { label: Summary for search engines, name: summary, widget: text, required: false }
+
+  - name: news
+    label: News & Events
+    folder: src/news
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    summary: "{{category}} / {{date}}: {{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: 'News or event?', name: category, widget: select, options: [News, Events] }
+      - { label: Publish date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: Author (news only), name: author, widget: string, required: false }
+      - { label: Event starts (events only), name: start, widget: datetime, format: "YYYY-MM-DDTHH:mm", required: false }
+      - { label: Event ends (optional), name: end, widget: datetime, format: "YYYY-MM-DDTHH:mm", required: false }
+      - { label: 'Event location (or "Online")', name: location, widget: string, required: false }
+      - { label: Main image, name: image, widget: image, required: false }
+      - { label: Image description (for screen readers), name: image_alt, widget: string, required: false }
+      - { label: Text, name: body, widget: markdown, modes: [rich_text], buttons: [bold, italic, link, bulleted-list, numbered-list], editor_components: [] }
+      - { label: Summary for search engines and calendars, name: summary, widget: text, required: false }

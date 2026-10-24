@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+---
+{# Home page. Editors change the hero line and the two text columns; the rest is fixed. #}
+<section class="hero-section text-white text-uppercase" style="background-image: url(/assets/theme/images/statute.svg);">
+  <div class="container">
+    <div class="text-holder">
+      <h2>{{ hero_heading }}</h2>
+    </div>
+  </div>
+</section>
+<section class="about-us-section">
+  <div class="container">
+    <div class="row mb-sm-5">
+      <div class="col-md-6 mb-0 mb-md-7">
+        <h5>{{ left_heading }}</h5>
+        {{ left_text | markdown | safe }}
+      </div>
+      <div class="col-md-6 mb-0 mb-md-7">
+        <h5>{{ right_heading }}</h5>
+        {{ right_text | markdown | safe }}
+        <br>
+        <div class="cta-box bg-primary text-white d-sm-flex flex-sm-column align-content-sm-start align-items-sm-start justify-content-sm-between">
+          <h3>Get Involved <small class="opacity">Everyone is welcome</small></h3>
+          <a class="btn btn-outline-light text-uppercase" href="/contact/">contact us</a>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-md-12"></div>
+    </div>
+  </div>
+</section>
+<section class="heading-section text-white text-uppercase bg-carrot">
+  <div class="container">
+    <div class="heading-section-content d-sm-flex align-content-sm-end align-items-sm-end justify-content-sm-between">
+      <h1>NEWS <span class="opacity">&amp;</span><br> EVENTS</h1>
+      <a class="btn btn-outline-light mb-2" href="/news-events/">read more</a>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="row no-gutters bg-carrot">
+    {%- for post in collections.posts | head(4) %}
+    {% include "partials/post-card.njk" %}
+    {%- endfor %}
+  </div>
+</section>

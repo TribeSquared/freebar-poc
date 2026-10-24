@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+bodyClass: post-template-default single single-post
+---
+{# A news or events post. "category" picks the colour (bg-News / bg-Events). #}
+<section class="profile-section bg-{{ category }} text-white d-md-flex flex-md-wrap">
+  <div class="profile-left-box d-md-flex justify-content-md-end align-content-md-center align-items-md-center">
+    <div class="container">
+      <div class="text-holder w-100">
+        <h4><span class="opacity">{{ category }}</span><br>{{ title }}</h4>
+        <hr>
+        {%- if category == "News" %}
+        <span class="author opacity">{{ page.date | longDate }} •{% if author %} {{ author }}{% endif %}</span>
+        {%- endif %}
+      </div>
+    </div>
+  </div>
+  <div class="profile-right-box">
+    <div class="image-holder">
+      {%- if image %}
+      <img src="{{ image }}" class="attachment-full size-full wp-post-image" alt="{{ image_alt }}" decoding="async" fetchpriority="high">
+      {%- endif %}
+    </div>
+  </div>
+</section>
+<section class="about-profile-section">
+  <div class="container">
+    <article class="row">
+      <div class="col-md-auto order-1 order-md-0">
+        <aside class="sidebar">
+          {%- if category == "Events" and start %}
+          <h6 class="display-4">DATE AND TIME</h6>
+          <ul class="list-unstyled">
+            <li>{{ start | eventDays(end) }}</li>
+            <li>{{ start | eventTimes(end) }}</li>
+            <li><a class="add-to-calendar" href="{{ page.url }}event.ics" download>Add to Calendar</a></li>
+          </ul>
+          {%- if location %}
+          <h6 class="display-4">LOCATION</h6>
+          <address>
+            <ul class="list-unstyled">
+              <li>{{ location }}</li>
+              {%- if location | lower != "online" %}
+              <li><a href="https://www.google.co.uk/maps/search/{{ location | urlencode }}/" target="_blank" rel="noopener">View on Google Maps</a></li>
+              {%- endif %}
+            </ul>
+          </address>
+          {%- endif %}
+          {%- endif %}
+        </aside>
+      </div>
+      <div class="col-md">
+        <div class="about-profile-box">
+          {{ content | safe }}
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

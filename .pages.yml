@@ -1,36 +1,125 @@
 # Pages CMS configuration (https://pagescms.org/docs/configuration/)
-# Editors only see the fields listed here, so layout, colours and code stay locked.
+# Editors only see the fields listed here, so layout, colours, menus and code stay locked.
 
 media:
-  - name: docs
-    label: Documents
-    input: src/media/docs
-    output: /media/docs
-    extensions: [pdf]
+  - name: uploads
+    label: Documents and images
+    input: src/wp-content/uploads
+    output: /wp-content/uploads
+    extensions: [pdf, doc, docx, xls, xlsx, jpg, jpeg, png, gif, webp, svg]
 
 content:
+  # ---------- Pages ----------
+  - name: home
+    label: Home page
+    type: file
+    path: src/pages/index.md
+    format: yaml-frontmatter
+    fields:
+      - name: hero_heading
+        label: Big heading
+        type: string
+        required: true
+      - name: left_heading
+        label: Left column heading
+        type: string
+      - name: left_text
+        label: Left column text
+        type: rich-text
+        options: { format: markdown, media: false }
+      - name: right_heading
+        label: Right column heading
+        type: string
+      - name: right_text
+        label: Right column text
+        type: rich-text
+        options: { format: markdown, media: false }
+      - name: summary
+        label: Summary for search engines
+        type: text
+
+  - name: about
+    label: About page
+    type: file
+    path: src/pages/about/index.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Page title, type: string, required: true }
+      - { name: body, label: Page text, type: rich-text, options: { format: markdown, media: uploads } }
+      - { name: summary, label: Summary for search engines, type: text }
+
   - name: governance
     label: Governance page
     type: file
     path: src/pages/about/governance.md
     format: yaml-frontmatter
     fields:
-      - name: title
-        label: Page title
-        type: string
-        required: true
-      - name: intro
-        label: Introduction
-        type: text
-      - name: report
-        label: Trustees' report (PDF)
+      - { name: title, label: Page title, type: string, required: true }
+      - { name: body, label: Page text, type: rich-text, options: { format: markdown, media: uploads } }
+      - name: trustee_report
+        label: Latest Trustee report (file)
         type: file
-        options:
-          media: docs
-          extensions: [pdf]
-      - name: report_label
-        label: Report link text
-        type: string
-      - name: body
-        label: Page text
-        type: rich-text
+        options: { media: uploads, extensions: [pdf, doc, docx] }
+      - { name: trustee_report_label, label: Trustee report link text, type: string }
+      - name: treasurer_report
+        label: Latest Treasurer report (file)
+        type: file
+        options: { media: uploads, extensions: [pdf, doc, docx, xls, xlsx] }
+      - { name: treasurer_report_label, label: Treasurer report link text, type: string }
+      - { name: note, label: Footnote, type: text }
+      - { name: summary, label: Summary for search engines, type: text }
+
+  - name: charter
+    label: The FreeBar Charter
+    type: file
+    path: src/pages/resources/the-freebar-charter.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Page title, type: string, required: true }
+      - { name: body, label: Page text, type: rich-text, options: { format: markdown, media: uploads } }
+      - { name: summary, label: Summary for search engines, type: text }
+
+  # ---------- News and events ----------
+  - name: news
+    label: News & Events
+    type: collection
+    path: src/news
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    exclude: [event-calendar.njk, news.11tydata.js]
+    view:
+      fields: [title, category, date]
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - name: category
+        label: News or event?
+        type: select
+        required: true
+        options: { values: [News, Events] }
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+        options: { format: yyyy-MM-dd }
+      - { name: author, label: Author (news only), type: string }
+      - name: start
+        label: Event starts (events only)
+        type: date
+        default: ""
+        options: { time: true, format: "yyyy-MM-dd'T'HH:mm" }
+      - name: end
+        label: Event ends (optional)
+        type: date
+        default: ""
+        options: { time: true, format: "yyyy-MM-dd'T'HH:mm" }
+      - { name: location, label: 'Event location (or "Online")', type: string }
+      - name: image
+        label: Main image
+        type: image
+        options: { media: uploads }
+      - { name: image_alt, label: Image description (for screen readers), type: string }
+      - { name: body, label: Text, type: rich-text, options: { format: markdown, media: uploads } }
+      - { name: summary, label: Summary for search engines and calendars, type: text }
