@@ -1,0 +1,62 @@
+:root {
+  --ink: #1d2a2f;
+  --muted: #5b6b70;
+  --paper: #fbfaf7;
+  --line: #e2ded5;
+  --accent: #0f6e6a;
+  --accent-soft: #e3f1ef;
+  --warn: #fff3cd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1rem; }
+
+.banner {
+  background: var(--warn);
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+}
+
+.site-header { border-bottom: 1px solid var(--line); background: #fff; }
+.site-header .wrap {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+  align-items: center; justify-content: space-between;
+  padding-top: 1rem; padding-bottom: 1rem;
+}
+.brand { font-weight: 700; color: var(--ink); text-decoration: none; font-size: 1.15rem; }
+.brand span { font-weight: 400; color: var(--muted); }
+nav { display: flex; gap: 1.25rem; }
+nav a { color: var(--ink); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+
+main { padding-top: 2.5rem; padding-bottom: 3rem; }
+h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 0.75rem; }
+h2 { font-size: 1.15rem; margin: 0 0 0.4rem; }
+a { color: var(--accent); }
+
+.intro { font-size: 1.15rem; color: var(--muted); margin: 0 0 1.75rem; }
+
+.download {
+  display: flex; flex-direction: column; gap: 0.15rem;
+  padding: 1rem 1.25rem; margin: 0 0 2rem;
+  background: var(--accent-soft); border: 1px solid #c6e2de; border-radius: 8px;
+  text-decoration: none; color: var(--ink);
+}
+.download:hover { border-color: var(--accent); }
+.download__label { font-weight: 600; color: var(--accent); }
+.download__meta { font-size: 0.85rem; color: var(--muted); }
+
+.cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 0 0 1.75rem; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 1.1rem 1.25rem; }
+.card p { margin: 0; }
+
+.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; padding: 1.25rem 0; }

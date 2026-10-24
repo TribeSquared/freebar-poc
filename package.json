@@ -1,0 +1,14 @@
+{
+  "name": "freebar-poc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Static rescue proof of concept, step 1: prove Pages CMS and Decap CMS on a bare Eleventy starter.",
+  "scripts": {
+    "build": "eleventy && node scripts/check-output.js",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  }
+}

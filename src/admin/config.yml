@@ -1,0 +1,40 @@
+# Decap CMS configuration (https://decapcms.org/docs/configuration-options/)
+# Logs in with Netlify Identity (email and password) and saves through Git Gateway,
+# so editors don't need a GitHub account.
+
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: /
+display_url: /
+logo_url: ""
+
+media_folder: src/media/docs
+public_folder: /media/docs
+
+collections:
+  - name: pages
+    label: Pages
+    delete: false
+    files:
+      - name: governance
+        label: Governance page
+        file: src/content/governance.md
+        fields:
+          - { label: Page title, name: title, widget: string }
+          - { label: Introduction, name: intro, widget: text, required: false }
+          - label: Trustees' report (PDF)
+            name: report
+            widget: file
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - { label: Report link text, name: report_label, widget: string, required: false }
+          - label: Page text
+            name: body
+            widget: markdown
+            modes: [rich_text]
+            buttons: [bold, italic, link, bulleted-list, numbered-list]
+            editor_components: []

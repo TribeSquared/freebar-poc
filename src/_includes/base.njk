@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{{ title }} · FreeBar editor trial</title>
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+  <div class="banner">Test site for an editor trial. Not the real FreeBar website.</div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">FreeBar <span>editor trial</span></a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/governance/">Governance</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">TribeSquared static rescue proof of concept · step 1</div>
+  </footer>
+  {% if identityWidget %}
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Sends people who accept a Decap invite on to the editor
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+  {% endif %}
+</body>
+</html>

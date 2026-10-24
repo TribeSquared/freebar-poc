@@ -1,0 +1,36 @@
+# Pages CMS configuration (https://pagescms.org/docs/configuration/)
+# Editors only see the fields listed here, so layout, colours and code stay locked.
+
+media:
+  - name: docs
+    label: Documents
+    input: src/media/docs
+    output: /media/docs
+    extensions: [pdf]
+
+content:
+  - name: governance
+    label: Governance page
+    type: file
+    path: src/content/governance.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: intro
+        label: Introduction
+        type: text
+      - name: report
+        label: Trustees' report (PDF)
+        type: file
+        options:
+          media: docs
+          extensions: [pdf]
+      - name: report_label
+        label: Report link text
+        type: string
+      - name: body
+        label: Page text
+        type: rich-text
