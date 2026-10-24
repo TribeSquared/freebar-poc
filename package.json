@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Static rescue proof of concept, step 1: prove Pages CMS and Decap CMS on a bare Eleventy starter.",
+  "description": "FreeBar static rescue proof of concept: Eleventy rebuild of freebar.co.uk, edited with Pages CMS.",
   "scripts": {
-    "build": "eleventy && node scripts/check-output.js",
+    "build": "eleventy && pagefind --site _site && node scripts/check-output.js",
     "start": "eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.7",
-    "markdown-it": "^14.3.3"
+    "markdown-it": "^14.3.3",
+    "pagefind": "^1.5.2"
   }
 }

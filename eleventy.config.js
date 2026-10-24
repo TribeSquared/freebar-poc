@@ -28,6 +28,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/*.{png,svg,ico}");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/_redirects");
   // The editor page is copied, not run through templates
   eleventyConfig.ignores.add("src/admin/**");
 

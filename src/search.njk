@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+title: Search
+bodyClass: page-template-default
+permalink: /search/
+noSearch: true
+---
+{# Site search with Pagefind: the index is built at deploy time and searched in the browser,
+   so there's no search service to run or pay for. The header search pop-up sends people here. #}
+<section class="heading-section text-white text-uppercase bg-primary">
+  <div class="container">
+    <div class="heading-section-content d-sm-flex align-content-sm-end align-items-sm-end justify-content-sm-between">
+      <h1>Search</h1>
+    </div>
+  </div>
+</section>
+<section class="form-section default-page">
+  <div class="container">
+    <div id="site-search" class="site-search"></div>
+    <noscript><p>Search needs JavaScript. You can also browse <a href="/news-events/">News &amp; Events</a>.</p></noscript>
+  </div>
+</section>
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    var ui = new PagefindUI({
+      element: "#site-search",
+      showSubResults: false,
+      showImages: false,
+      resetStyles: false,
+      translations: { placeholder: "Search FreeBar", zero_results: "No results for [SEARCH_TERM]" }
+    });
+    var q = new URLSearchParams(window.location.search).get("q");
+    if (q) ui.triggerSearch(q);
+  });
+</script>

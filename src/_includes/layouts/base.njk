@@ -31,7 +31,8 @@
 <body class="{{ bodyClass }}">
   <div id="wrapper">
     {% include "partials/header.njk" %}
-    <main id="main">
+    {#- Search indexes the main content only (not menus or footer); some pages opt out with noSearch #}
+    <main id="main"{% if not noSearch %} data-pagefind-body data-pagefind-meta="title:{{ title }}"{% endif %}>
       {{ content | safe }}
     </main>
     {% include "partials/footer.njk" %}

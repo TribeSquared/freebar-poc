@@ -14,6 +14,10 @@ Eleventy rebuild of freebar.co.uk, edited with Pages CMS (Decap CMS as fallback)
 | `src/news-events.njk` | News & Events list, built from every post |
 | `src/news/` | One Markdown file per post; the file name is the web address (as on WordPress) |
 | `src/news/event-calendar.njk` | Makes an `event.ics` calendar file for each event (replaces the AddEvent script) |
+| `src/_includes/layouts/contact.njk` | Contact page: Netlify Forms with a honeypot (replaces Contact Form 7 and reCAPTCHA); thanks page at `/contact/thanks/` |
+| `src/search.njk` | Search page. Pagefind builds the index after Eleventy (`npm run build`); only page content is indexed |
+| `src/_redirects` | Redirects for old WordPress addresses: leftover pages, archives, feeds, `?s=` searches; WordPress admin paths return 410 |
+| `src/404.njk` | Page-not-found page |
 | `src/wp-content/uploads/` | PDFs and images, at the same addresses as on the live site so outside links keep working |
 | `src/_includes/partials/` | Header, footer and search pop-up |
 | `src/_data/nav.js` | Main menu, About menu and footer links, in one place |

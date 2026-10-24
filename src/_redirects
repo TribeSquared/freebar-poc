@@ -1,0 +1,33 @@
+# Netlify redirects for addresses that change when FreeBar leaves WordPress.
+# Page and post addresses are unchanged, so they need no rules here.
+# A rule only applies when no real file exists at that address.
+
+# WordPress site search (/?s=word) -> the new search page
+/                   s=:s    /search/?q=:s      301
+
+# Leftover pages flagged in the audit
+/sample-page/               /                  301
+/holding-page/              /                  301
+/privacy-policy-old/        /privacy-policy/   301
+
+# Category, tag and author archives -> News & Events
+/category/*                 /news-events/      301
+/tag/*                      /news-events/      301
+/author/*                   /news-events/      301
+
+# RSS feeds (WordPress made one per page) -> the page itself
+/feed/                      /news-events/      301
+/feed                       /news-events/      301
+/comments/feed/             /news-events/      301
+/:slug/feed/                /:slug/            301
+/:slug/feed                 /:slug/            301
+
+# WordPress admin, login and internals no longer exist: tell bots they're gone for good
+/wp-admin/*                 /404.html          410
+/wp-login.php               /404.html          410
+/xmlrpc.php                 /404.html          410
+/wp-json/*                  /404.html          410
+/wp-includes/*              /404.html          410
+/wp-content/plugins/*       /404.html          410
+/wp-content/themes/*        /404.html          410
+/wp-cron.php                /404.html          410

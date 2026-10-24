@@ -13,3 +13,10 @@
   display: inline-block;
   margin-top: 1em;
 }
+
+/* Contact form: on the live site the theme's .form-width rule never applied (the form was nested
+   inside Contact Form 7's form, which browsers ignore), so the form fills the content column.
+   Contact Form 7's stylesheet also added this space below it. */
+.contact-form {
+  margin-bottom: 18px;
+}

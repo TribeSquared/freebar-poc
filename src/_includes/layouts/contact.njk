@@ -1,0 +1,56 @@
+---
+layout: layouts/base.njk
+---
+{# Contact page: Netlify Forms with a honeypot for spam (replaces Contact Form 7 and Google reCAPTCHA).
+   Same fields and look as the live form. Labels are hidden visually but read by screen readers. #}
+<section class="heading-section text-white text-uppercase {{ hero }}">
+  <div class="container">
+    <div class="heading-section-content d-sm-flex align-content-sm-end align-items-sm-end justify-content-sm-between">
+      <h1>{{ title }}</h1>
+    </div>
+  </div>
+</section>
+<section class="form-section default-page">
+  <div class="container">
+    {{ content | safe }}
+    <form name="contact" method="POST" action="/contact/thanks/" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+      <input type="hidden" name="subject" value="FreeBar website enquiry (%{submissionId})">
+      <p class="d-none" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <fieldset>
+        <div class="form-group">
+          <p>
+            <label for="contact-first-name" class="sr-only">First name (required)</label>
+            <input id="contact-first-name" class="form-control" type="text" name="first-name" placeholder="First name *" maxlength="400" required autocomplete="given-name">
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            <label for="contact-last-name" class="sr-only">Last name (required)</label>
+            <input id="contact-last-name" class="form-control" type="text" name="last-name" placeholder="Last name *" maxlength="400" required autocomplete="family-name">
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            <label for="contact-email" class="sr-only">Your email (required)</label>
+            <input id="contact-email" class="form-control" type="email" name="email" placeholder="Your email *" maxlength="400" required autocomplete="email">
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            <label for="contact-topic" class="sr-only">Subject</label>
+            <input id="contact-topic" class="form-control" type="text" name="topic" placeholder="Subject" maxlength="400">
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            <label for="contact-message" class="sr-only">Your message</label>
+            <textarea id="contact-message" class="form-control" name="message" placeholder="Your message" cols="40" rows="10" maxlength="2000"></textarea>
+          </p>
+        </div>
+        <div class="btn-holder text-center">
+          <p><button type="submit" class="btn btn-primary text-uppercase">Send</button></p>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

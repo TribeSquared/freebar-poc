@@ -4,7 +4,7 @@ import { readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const out = "_site";
-const expected = ["index.html", "about/index.html", "about/governance/index.html", "resources/the-freebar-charter/index.html", "news-events/index.html", "freebar-statement-following-supreme-court-ruling/index.html", "bdabar-x-freebar-ourselves-on-our-own-terms-9-february/event.ics", "admin/index.html", "assets/theme/style.css", "assets/js/site.js", "wp-content/uploads/2025/08/2024-Trustee-Report-Final-2.pdf"];
+const expected = ["index.html", "about/index.html", "about/governance/index.html", "resources/the-freebar-charter/index.html", "news-events/index.html", "freebar-statement-following-supreme-court-ruling/index.html", "bdabar-x-freebar-ourselves-on-our-own-terms-9-february/event.ics", "admin/index.html", "assets/theme/style.css", "assets/js/site.js", "wp-content/uploads/2025/08/2024-Trustee-Report-Final-2.pdf", "contact/index.html", "contact/thanks/index.html", "search/index.html", "404.html", "_redirects", "pagefind/pagefind-ui.js"];
 const problems = [];
 
 function walk(dir) {
