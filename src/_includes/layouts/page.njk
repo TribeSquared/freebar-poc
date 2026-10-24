@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+---
+{# Plain page: coloured title band, then the content (Charter, Contact, Privacy, Resources) #}
+<section class="heading-section text-white text-uppercase {{ hero }}">
+  <div class="container">
+    <div class="heading-section-content d-sm-flex align-content-sm-end align-items-sm-end justify-content-sm-between">
+      <h1>{{ title }}</h1>
+    </div>
+  </div>
+</section>
+<section class="form-section default-page">
+  <div class="container">
+    {% if intro %}<p>{{ intro }}</p>{% endif %}
+    {{ content | safe }}
+  </div>
+</section>

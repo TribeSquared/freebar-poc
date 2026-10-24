@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+---
+{# About section page: coloured title band, About menu on the left, content on the right #}
+<section class="heading-section text-white text-uppercase {{ hero }}">
+  <div class="container">
+    <div class="heading-section-content d-sm-flex align-content-sm-end align-items-sm-end justify-content-sm-between">
+      <h1>{{ title }}</h1>
+    </div>
+  </div>
+</section>
+<section class="about-profile-section">
+  <div class="container">
+    <article class="row">
+      <div class="col-md-auto order-1 order-md-0">
+        <aside class="sidebar" aria-label="About FreeBar">
+          <ul class="sidebar-nav display-3">
+            {%- for item in nav.aboutSidebar %}
+            <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {%- endfor %}
+          </ul>
+        </aside>
+      </div>
+      <div class="col-md">
+        <div class="about-profile-box">
+          {% if intro %}<p>{{ intro }}</p>{% endif %}
+          {{ content | safe }}
+          {% if report %}<p><a href="{{ report }}">{{ report_label | default("Download the report") }}</a></p>{% endif %}
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

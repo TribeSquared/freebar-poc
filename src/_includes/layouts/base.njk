@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{ title }} - {{ site.name }}</title>
+  <meta name="description" content="{{ summary or site.description }}">
+  {% if site.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }} - {{ site.name }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@FreeBarLGBT">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700%7cRoboto:100,300,400" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/theme/bootstrap.css">
+  <link rel="stylesheet" href="/assets/theme/style.css">
+  <link rel="stylesheet" href="/assets/theme/additional.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="/assets/js/site.js" defer></script>
+</head>
+<body class="{{ bodyClass }}">
+  <div id="wrapper">
+    {% include "partials/header.njk" %}
+    <main id="main">
+      {{ content | safe }}
+    </main>
+    {% include "partials/footer.njk" %}
+  </div>
+  {% include "partials/search-modal.njk" %}
+
+  {% if identityWidget %}
+  {# Decap CMS invites land on the home page; this sends people on to the editor #}
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () { document.location.href = "/admin/"; });
+        }
+      });
+    }
+  </script>
+  {% endif %}
+</body>
+</html>

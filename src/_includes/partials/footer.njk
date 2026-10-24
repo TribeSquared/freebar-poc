@@ -1,0 +1,47 @@
+<footer id="footer" class="text-white bg-dark">
+  <div class="footer-content">
+    <div class="container">
+      <div class="row justify-content-sm-between">
+        <div class="col-sm">
+          <div class="left-bar text-center text-sm-left">
+            <div class="footer-logo">
+              <a href="/"><img src="/assets/theme/images/logo-white.svg" alt="FreeBar home"></a>
+            </div>
+            <aside class="widget widget_text">
+              <div class="textwidget"><p>{{ site.tagline }}</p></div>
+            </aside>
+            <ul class="social-list list-unstyled d-flex flex-wrap justify-content-center justify-content-sm-start">
+              <li><a class="icon-twitter-square" href="{{ site.twitter }}" target="_blank" rel="noopener" aria-label="Follow FreeBar on X (Twitter)"></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="right-bar ml-sm-auto text-center text-sm-right">
+            <div class="footer-second-logo">
+              <a href="https://www.stonewall.org.uk/" target="_blank" rel="noopener">
+                <img src="/assets/theme/images/stonewall-logo.svg" alt="Stonewall: acceptance without exception">
+              </a>
+            </div>
+            <span>This website was developed by <a href="https://tribesquared.com" target="_blank" rel="noopener">TribeSquared</a> in conjunction with <a href="https://www.matrixlaw.co.uk/" target="_blank" rel="noopener">Matrix Chambers</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+          <ul class="footer-nav list-unstyled list-inline text-white">
+            {%- for item in nav.footer %}
+            <li class="list-inline-item"><a href="{{ item.url }}">{{ item.label }}</a></li>
+            {%- endfor %}
+          </ul>
+        </div>
+        <div class="col-md-auto">
+          <a class="copyright-link" href="/"><span class="copy-icon">&copy;</span> {{ site.year }} FreeBar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+{# Search pop-up. The search itself is wired up in step 5 (Pagefind). #}
+<div id="modal-search" class="modal fade" tabindex="-1" role="dialog" aria-label="Search" aria-hidden="true">
+  <div class="modal-dialog modal-lg text-white">
+    <div class="modal-content bg-primary">
+      <div class="modal-header position-relative">
+        <div class="modal-logo">
+          <a href="/"><img src="/assets/theme/images/logo-white.svg" alt="FreeBar home"></a>
+        </div>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close search">
+          <i class="icon-cancel" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/search/" role="search">
+          <fieldset>
+            <input type="search" placeholder="Search" name="q" aria-label="Search the site">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

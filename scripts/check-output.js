@@ -4,7 +4,7 @@ import { readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const out = "_site";
-const expected = ["index.html", "governance/index.html", "admin/index.html"];
+const expected = ["index.html", "about/governance/index.html", "admin/index.html", "assets/theme/style.css", "assets/js/site.js"];
 const problems = [];
 
 function walk(dir) {

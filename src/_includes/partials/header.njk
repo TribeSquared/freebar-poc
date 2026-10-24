@@ -1,0 +1,35 @@
+<header id="header" class="position-relative">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light position-static" aria-label="Main">
+      <a class="navbar-brand" href="/">
+        <img src="/assets/theme/images/Freebar2021.png" alt="FreeBar home">
+      </a>
+      <div class="order-lg-1">
+        <a href="#modal-search" class="search-opener icon-search text-danger" data-toggle="modal" data-target="#modal-search" aria-label="Search"></a>
+        <button class="navbar-toggler ml-lg-auto" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav ml-auto text-uppercase">
+          {%- for item in nav.main %}
+          {%- if item.children %}
+          <li class="nav-item{% if item.hover %} hover-{{ item.hover }}{% endif %} dropdown">
+            <a class="nav-link dropdown-toggle" href="{{ item.children[0].url }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ item.label }}</a>
+            <div class="dropdown-menu">
+              {%- for child in item.children %}
+              <a class="dropdown-item" href="{{ child.url }}">{{ child.label }}</a>
+              {%- endfor %}
+            </div>
+          </li>
+          {%- else %}
+          <li class="nav-item{% if item.hover %} hover-{{ item.hover }}{% endif %}">
+            <a class="nav-link" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          </li>
+          {%- endif %}
+          {%- endfor %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

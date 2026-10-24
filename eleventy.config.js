@@ -1,8 +1,9 @@
 export default function (eleventyConfig) {
-  // Files copied as-is: the Decap editor, uploaded PDFs, styles and robots.txt
+  // Files copied as-is: the Decap editor, uploaded files, the theme, favicons and robots.txt
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/media");
-  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/*.{png,svg,ico}");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   // The editor page is copied, not run through templates
   eleventyConfig.ignores.add("src/admin/**");

@@ -12,7 +12,7 @@ content:
   - name: governance
     label: Governance page
     type: file
-    path: src/content/governance.md
+    path: src/pages/about/governance.md
     format: yaml-frontmatter
     fields:
       - name: title

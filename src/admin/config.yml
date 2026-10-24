@@ -20,7 +20,7 @@ collections:
     files:
       - name: governance
         label: Governance page
-        file: src/content/governance.md
+        file: src/pages/about/governance.md
         fields:
           - { label: Page title, name: title, widget: string }
           - { label: Introduction, name: intro, widget: text, required: false }

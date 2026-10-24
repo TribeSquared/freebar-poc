@@ -1,0 +1,4 @@
+/* Carried over from WordPress "Additional CSS" on the live site (embedded in every page,
+   not in the theme files). Loaded after style.css. */
+.navbar-brand { max-width: 200px; }
+.footer-second-logo { display: none; }
