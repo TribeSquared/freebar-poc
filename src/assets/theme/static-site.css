@@ -39,3 +39,119 @@
   margin: 0 12px 12px 0;
   vertical-align: middle;
 }
+
+/* ---------------------------------------------------------------------------
+   Editor formatting safety net.
+   Pages CMS lets editors use headings, quotes, code blocks, tables and inline
+   code inside page text. The theme only styled some of these, and only on plain
+   pages, so here every option gets the same on-brand look in every text area:
+   plain pages, About-section pages and posts, and the home page columns (.editor-text,
+   which keeps the Get Involved box out of reach).
+   --------------------------------------------------------------------------- */
+
+/* Headings inside text. Heading 1 looks like Heading 2, so a page never seems to have
+   two main titles (the coloured title band is the page's real title). Sizes match the
+   theme's plain pages. */
+.default-page .container h1,
+.default-page .container h2,
+.about-profile-box h1,
+.about-profile-box h2,
+.editor-text h1,
+.editor-text h2 {
+  font-size: 24px;
+  line-height: 36px;
+  margin: 12px 0;
+}
+.default-page .container h3,
+.default-page .container h4,
+.about-profile-box h3,
+.about-profile-box h4,
+.editor-text h3,
+.editor-text h4 {
+  font-size: 18px;
+  line-height: 27px;
+  margin: 9px 0;
+}
+
+/* Quotes: a coloured bar in the section's link colour (yellow; green in About pages) */
+.default-page blockquote,
+.about-profile-box blockquote,
+.editor-text blockquote {
+  margin: 0 0 1rem;
+  padding: 12px 18px;
+  background: #f2f2f2;
+  border-left: 4px solid #fdc741;
+}
+.about-profile-box blockquote {
+  border-left-color: #25ce7b;
+}
+.default-page blockquote > :last-child,
+.about-profile-box blockquote > :last-child,
+.editor-text blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* Code: editors use it to set text apart, so it looks like the site's own text
+   on a light panel, not like computer code */
+.default-page pre,
+.about-profile-box pre,
+.editor-text pre {
+  margin: 0 0 1rem;
+  padding: 12px 18px;
+  background: #f2f2f2;
+  white-space: pre-wrap;
+  font: inherit;
+  color: inherit;
+}
+.default-page code,
+.about-profile-box code,
+.editor-text code {
+  font: inherit;
+  color: inherit;
+  background: #f2f2f2;
+  padding: 0 0.25em;
+}
+.default-page pre code,
+.about-profile-box pre code,
+.editor-text pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Tables: full width, spaced, with a strong header line; scroll sideways on phones */
+.default-page table,
+.about-profile-box table,
+.editor-text table {
+  width: 100%;
+  margin: 0 0 1rem;
+  border-collapse: collapse;
+}
+.default-page th, .default-page td,
+.about-profile-box th, .about-profile-box td,
+.editor-text th, .editor-text td {
+  padding: 8px 16px 8px 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #e2e2e2;
+}
+.default-page th,
+.about-profile-box th,
+.editor-text th {
+  font-family: "Roboto Condensed", Roboto, sans-serif;
+  font-weight: 700;
+  border-bottom: 2px solid #4a4a4a;
+}
+@media (max-width: 575.98px) {
+  .default-page table,
+  .about-profile-box table,
+  .editor-text table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* A single image on its own line: no bigger than the original Charter banner */
+.default-page p > img:only-child,
+.about-profile-box p > img:only-child {
+  max-width: min(100%, 612px);
+}
