@@ -6,6 +6,6 @@ author: Wombat
 image: /wp-content/uploads/Spotify.png
 image_alt: Spotify
 ---
-##TITLE
+# TITLE
 
-Something else
+Something **else**
