@@ -1,6 +1,6 @@
 ---
 title: Governance
-trustee_report: /wp-content/uploads/2025/08/2024-Trustee-Report-Final-2.pdf
+trustee_report: /wp-content/uploads/trustee-report-2026-test.pdf
 trustee_report_label: 2024 Trustee Report
 treasurer_report: /wp-content/uploads/2026/02/Treasurer-Report-year-end-30-June-2025.docx
 treasurer_report_label: 2025 Treasurer Report
