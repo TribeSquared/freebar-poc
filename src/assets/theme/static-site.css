@@ -20,3 +20,22 @@
 .contact-form {
   margin-bottom: 18px;
 }
+
+/* Images in page text. Editors can add images or re-save pages, and the editor drops any
+   width/height set on an image, so sizing lives here, never in the content:
+   - no image is ever wider than its column;
+   - several images on one line are a row of logos, so they're kept small and level. */
+.default-page img,
+.about-profile-box img {
+  max-width: 100%;
+  height: auto;
+}
+.default-page p > img:not(:only-child),
+.about-profile-box p > img:not(:only-child) {
+  height: 65px;
+  width: auto;
+  max-width: 30%;
+  object-fit: contain;
+  margin: 0 12px 12px 0;
+  vertical-align: middle;
+}
